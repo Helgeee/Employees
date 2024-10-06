@@ -8,7 +8,7 @@ import EmployeesAddForm from '../employees-add-form/employees-add-form';
 
 import './app.css';
 
-class App extends Component {
+class App extends Component { //Сотрудники по умолчанию
     constructor(props) {
         super(props);
         this.state = {
@@ -40,7 +40,7 @@ class App extends Component {
         })
     }
 
-  
+    // Добавление пользователей
     addItem = (name, salary) => {
         const newItem = {
             name, 
@@ -67,7 +67,7 @@ class App extends Component {
             })
         }))
     }
-
+    // Поиск сотрудников
     searchEmp = (items, term) => {
         if (term.length === 0) {
             return items;
@@ -81,7 +81,7 @@ class App extends Component {
     onUpdateSearch = (term) => {
         this.setState({term});
     }
-
+    // Фильтрация сотрудников
     filterPost = (items, filter) => {
         switch (filter) {
             case 'rise':
@@ -97,7 +97,7 @@ class App extends Component {
         this.setState({filter});
     }
 
-    render() {
+    render() { // Отображение энтерфейса на основе данных из состояния компонента и обработчиков событий.
         const {data, term, filter} = this.state;
         const employees = this.state.data.length;
         const increased = this.state.data.filter(item => item.increase).length;
